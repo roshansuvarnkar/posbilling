@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Items</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/createitems']" [queryParams]="{record:'a'| json }">
+      <ion-icon name="add" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngFor="let a of items">
+    <ion-item  (click)="itemClick(a)">
+     <ion-avatar item-start slot="start" >
+       <h2  class="first-letter" [ngStyle]="{'background-color':a.color}"></h2>
+     </ion-avatar>&nbsp;&nbsp;&nbsp;
+     <span><b>{{a.Description}}</b></span>
+   </ion-item>
+  </div>
+</ion-content>

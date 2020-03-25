@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="showreceipt"></ion-back-button>
+    </ion-buttons>
+    <span class="tol">
+      <ion-title>#1-{{1008 - theRecord.index+1}}</ion-title>
+      <button mat-button type="button" name="button" (click)="refund()">Refund</button>
+    </span>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="total">
+    {{theRecord.Amount}}.00
+    <br>
+    <sub>Total</sub>
+  </div>
+  <hr>
+
+  <span class="cashier">
+    Cashier : Owner
+  </span>
+  <hr>
+
+
+  <div class="divide" *ngFor="let a of theRecord.product ; let i = index">
+    <span>
+      <small>{{i+1}}.   </small>&nbsp;  {{a.name}} <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub>{{a.qty}} x {{a.price}}</sub>
+
+    </span>
+    <span>
+      {{a.qty * a.price}}.00
+    </span>
+  </div>
+  <hr>
+  <div class="divide">
+    <span>
+      Total
+    </span>
+    <span>
+      {{theRecord.Amount}}.00
+    </span>
+  </div>
+
+  <hr>
+
+  <div class="datemed">
+    <span>
+      {{theRecord.PaymentDate | date :'medium' }}
+    </span>
+    <span>
+      #1-{{1008 - theRecord.index+1}}
+    </span>
+  </div>
+<br><br>
+</ion-content>

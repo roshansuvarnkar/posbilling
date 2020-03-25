@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar  color='primary'>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Receipts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar  [(ngModel)]="term"    [debounce]="500" placeholder="Search" ></ion-searchbar>
+
+  <div class="" *ngFor='let a of grptmp | filter:term  '>
+    <div class="heading">
+      {{a.date | date :'fullDate' }}
+    </div>
+    <div *ngFor='let b of a.games | filter:term ; let i = j' >
+      <div class="cont">
+
+        <!-- {{b.Amount}} <br> -->
+        <ion-item (click)='showDetails(b, b.index)'>
+          <ion-icon *ngIf="b.PaymentTypeID==1" ios="ios-cash" md="md-cash" slot="start"></ion-icon>
+
+          <ion-icon *ngIf="b.PaymentTypeID==2" ios="ios-card" md="md-card" slot="start"></ion-icon>
+          <span class='outer-con'>
+            <span class='inner-con'>
+              {{b.Amount}} <br>
+              <small>{{b.PaymentDate | date:'shortTime'}}</small>
+            </span>
+            <span class='id'>
+              {{i}}
+              #1-{{1008 - b.index+1}}
+            </span>
+          </span>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+</ion-content>

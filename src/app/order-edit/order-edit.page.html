@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>order-edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        Product
+      </ion-col>
+      <ion-col size="3">
+        Price
+      </ion-col>
+      <ion-col size="3">
+        Qty
+      </ion-col>
+    </ion-row>
+
+
+
+    <form [formGroup]="receiptForm"  (ngSubmit)="formSubmit(receiptForm.value)">
+      <div class="diagWrapper"  formArrayName="items" *ngIf="receiptForm.controls.items?.length>0">
+        <div class='item' *ngFor="let item of receiptForm.get('items').controls; let i=index;">
+          <ng-container [formGroupName]="i">
+            <ion-row>
+
+              <ion-col size="6">
+                <ion-input type="text" disabled formControlName="Description"></ion-input>
+              </ion-col>
+
+              <ion-col size="3">
+                <ion-input type="text" formControlName="Price"></ion-input>
+              </ion-col>
+
+              <ion-col size="3">
+                <ion-input type="text" formControlName="quantity"></ion-input>
+              </ion-col>
+
+            </ion-row>
+          </ng-container>
+        </div>
+
+        <span class="total"><b>Total</b> <b>{{Totalcharge}}</b></span>
+        <br>
+        <ion-fab vertical="bottom"  slot="fixed">
+          <ion-button type="submit" color="primary" expand="full">Submit</ion-button>
+        </ion-fab>
+
+      </div>
+    </form>
+  </ion-grid>
+
+</ion-content>

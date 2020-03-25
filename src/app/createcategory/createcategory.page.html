@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar  color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="categories"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mat-card>
+    <mat-card-subtitle>
+      Create Category
+    </mat-card-subtitle>
+    <mat-card-content>
+      <div class="alert"  *ngIf="message">
+        {{message}}
+       </div>
+      <form class="form" [formGroup]="loginform" (ngSubmit)="onSubmit(loginform.value)">
+
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="text" placeholder="Name" formControlName="name" matInput required >
+            </mat-form-field>
+          </div>
+
+      <!-- [disabled]="!loginform.valid" -->
+      <!-- [ngStyle]="{'display':dis}" -->
+      <!-- *ngIf="a==b" <--><br>
+      <mat-label>Category color</mat-label>
+      <br><br>
+      <div class="colorsel">
+        <span class="box" *ngFor="let a of colors" >
+          <span class="createbox" [ngStyle]="{'background-color':a.color}" (click)="selectedColor(a)">
+              <ion-icon  ios="ios-checkmark" md="md-checkmark"   [ngStyle]="{'color':a.display}"></ion-icon>
+          </span>&nbsp;&nbsp;
+        </span>
+      </div>
+
+          <ion-button class="submit-btn" expand="block" full type="submit" >Submit</ion-button>
+
+
+      </form>
+
+
+      <!-- <ion-item-divider>
+      </ion-item-divider>
+  <br>
+      <ion-button class="submit-btn" expand="block" full type="submit" >Assign Items</ion-button><br>
+      <ion-button class="submit-btn" expand="block" full type="submit" >Create Items</ion-button> -->
+    </mat-card-content>
+  </mat-card><br>
+<br>
+  <mat-card>
+    <mat-card-content>
+      <div *ngIf="deleteYes">
+        <ion-button class="submit-btn" expand="block" full type="submit" >Delete Category</ion-button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</ion-content>

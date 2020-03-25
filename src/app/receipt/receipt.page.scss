@@ -1,0 +1,31 @@
+.head {
+    text-align: center;
+    color: black;
+}
+.spacing{
+  letter-spacing: 1px;
+}
+hr {
+  border-top: 1.3px dotted #b5afaf;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+}
+ion-button.md.button.button-full.button-solid.ion-activatable.ion-focusable.hydrated {
+    position: absolute;
+    width: 99%;
+    bottom: 0;
+}
+.content {
+    display: flex;
+    font-size: 11px;
+    color: black;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: transparent !important;
+}
+.input {
+    width: 1rem;
+}

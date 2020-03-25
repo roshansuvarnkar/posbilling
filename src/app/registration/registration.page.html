@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-title>Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <h3>Registration Form</h3> -->
+  <mat-card>
+    <mat-card-subtitle>
+      Register
+    </mat-card-subtitle>
+    <mat-card-content>
+      <form class="form" [formGroup]="registerform" (ngSubmit)="onSubmit(registerform.value)">
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="text" placeholder="Email" formControlName="login_id" matInput required >
+              <!-- <mat-error *ngIf="!email.hasError('required')">Enter ur mail</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="input">
+            <mat-form-field >
+              <input matInput  [type]="passwordType" placeholder="Password" formControlName="password" matInput required >
+              <mat-icon matSuffix (click)="hideShowPassword()">{{passwordIcon}}</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="text" placeholder="Business name" formControlName="business_name" matInput required >
+            </mat-form-field>
+          </div>
+
+          <mat-form-field>
+            <mat-label>Business Type</mat-label>
+            <mat-select formControlName="business_type" required>
+              <mat-option *ngFor="let bus of bus_option" [value]="bus">
+                {{bus.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country" required>
+              <mat-option *ngFor="let cou of country" [value]="cou">
+                {{cou.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="text" placeholder="Address" formControlName="address" matInput required >
+
+            </mat-form-field>
+          </div>
+<!-- email.hasError('required') -->
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="text" placeholder="State" formControlName="state" matInput required >
+            </mat-form-field>
+          </div>
+
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="text" placeholder="City" formControlName="city" matInput required >
+            </mat-form-field>
+          </div>
+
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="number" placeholder="Postal Code" formControlName="postalCode" matInput required >
+            </mat-form-field>
+          </div>
+      <!-- [disabled]="!registerform.valid" -->
+
+                <ion-button class="submit-btn" expand="block" full type="submit" >Sign Up</ion-button>
+                <div class="centre">
+                  <br><a class="underline-none" routerLink="/login">Login</a>
+                </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+
+
+</ion-content>

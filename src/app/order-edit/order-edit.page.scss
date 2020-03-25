@@ -1,0 +1,18 @@
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: transparent !important;
+}
+.input {
+    width: 1rem;
+}
+.native-input:disabled{
+   opacity:1 !important;
+}
+.total{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 3rem 0 1rem;
+  border-top: 1px solid black;
+}
+ion-fab.md.fab-vertical-bottom.hydrated {
+    width: 97%;
+}

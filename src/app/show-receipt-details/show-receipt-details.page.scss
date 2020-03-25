@@ -1,0 +1,33 @@
+.total {
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+.divide {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+hr{
+    border-bottom: 1px solid #ccc;
+    width: 98%;
+}
+span.cashier {
+    padding: 0.5rem;
+}
+.datemed {
+    color: #848484;
+    font-weight: 300;
+    padding: 0.5rem;
+}
+sub {
+    bottom: 5px;
+}
+.datemed {
+    display: flex;
+    justify-content: space-between;
+}
+span.tol {
+    display: flex;
+    justify-content: space-between;
+}

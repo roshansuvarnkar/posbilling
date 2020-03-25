@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Receipt</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card >
+
+
+    <ion-card-content>
+
+      <div class="head spacing">
+        <!-- <h5><b>{{login}}</b></h5><hr> -->
+        <h5>POSBILLING</h5><hr>
+        <h1><ion-card-subtitle>Total</ion-card-subtitle><b>{{charge}}.00</b></h1>
+      </div>
+
+      <hr>
+      <div class="flex" *ngFor="let a of theRecord">
+        <span>{{a.Description}} <p><small>{{a.Price}}.00 x {{a.quantity}}</small></p></span>
+        <span>{{a.charge}}.00</span>
+      </div>
+      <hr>
+      <div class="flex">
+        <span><b>Total</b></span><span><b>{{charge}}.00</b></span>
+      </div><br>
+      <div class="flex">
+        <span>Cash</span><span>{{charge}}.00</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="full" (click)="presentAlertPrompt()">Proceed</ion-button>
+</ion-content>

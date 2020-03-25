@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="items"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create items</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mat-card>
+    <mat-card-subtitle>
+      Login
+    </mat-card-subtitle>
+    <mat-card-content>
+      <form class="form" [formGroup]="loginform" (ngSubmit)="onSubmit(loginform.value)">
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="text" placeholder="Name" formControlName="name" matInput required >
+            </mat-form-field>
+          </div>
+
+          <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category" required>
+              <!-- <mat-option routerLink="/createcategory">Create Category</mat-option> -->
+              <mat-option *ngFor="let a of categories" [value]="a">
+                {{a.CategoryName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+
+
+
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="number" placeholder="Quantiy unit " formControlName="qtyunit" matInput  >
+            </mat-form-field>
+          </div>
+
+
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="number" placeholder="Price" formControlName="price" matInput required >
+              <mat-hint>Leave the field blank to indicate the price upon sale</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="number" placeholder="Cost" formControlName="cost" matInput  >
+            </mat-form-field>
+          </div>
+
+
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="number" placeholder="In Stock" formControlName="stock" matInput  >
+            </mat-form-field>
+          </div>
+
+
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="number" placeholder="Reorder level" formControlName="rorderlevel" matInput  >
+            </mat-form-field>
+          </div>
+
+
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="text" placeholder="Barcode" formControlName="barcode" matInput  >
+            </mat-form-field>
+          </div>
+
+          <br>
+          <mat-label>Category color</mat-label>
+          <br><br>
+          <div class="colorsel">
+            <span class="box" *ngFor="let a of colors" >
+              <span class="createbox" [ngStyle]="{'background-color':a.color}" (click)="selectedColor(a)">
+                  <ion-icon  ios="ios-checkmark" md="md-checkmark"   [ngStyle]="{'color':a.display}"></ion-icon>
+              </span>&nbsp;&nbsp;
+            </span>
+          </div>
+
+      <!-- [disabled]="!loginform.valid" -->
+
+          <ion-button class="submit-btn" expand="block" full type="submit" >Submit</ion-button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</ion-content>

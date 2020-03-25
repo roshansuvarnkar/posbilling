@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Ticket &nbsp;<small>[ <small>{{quantity}}</small> ]</small>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="scan()">
+       <ion-icon ios="ios-barcode" md="md-barcode"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+ <!-- [disabled]='disable' -->
+  <ion-card (click)="recepit()">
+    <ion-card-content>
+      <div class="center">
+        <span>CHARGE</span><br>
+        <span><b>{{charge}}.00</b></span><br>
+        <span class="checkout"><small> Click to checkout <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></small></span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-row *ngIf="!showsearch">
+     <ion-col size="10" style="border-right: 1px solid #e2e0e0;">
+       <mat-select  [(value)]="selected" (selectionChange)="selectchange($event)">
+         <mat-option value="All" >All items</mat-option>
+         <mat-option *ngFor="let a of categories" [value]="a">
+           {{a.CategoryName}}
+         </mat-option>
+       </mat-select>
+     </ion-col>
+     <ion-col style="text-align: center;" (click)="searchclick()">
+       <ion-icon  ios="ios-search" md="md-search" style="zoom: 1.4;"></ion-icon>
+
+     </ion-col>
+   </ion-row>
+   <!-- (ionInput)="getItems($event)"  -->
+   <div class="">
+
+     <ion-searchbar *ngIf="showsearch" [(ngModel)]="term"  (ionClear)="onCancel($event)" show-cancel-button='focus' [debounce]="500" placeholder="Search" ></ion-searchbar>
+
+
+     <div *ngFor="let a of products | filter:term ">
+       <ion-item >
+         <ion-avatar item-start slot="start" (click)="quantityenter(a)">
+           <h2  class="first-letter" [ngStyle]="{'background-color':a.color}"></h2>
+         </ion-avatar>&nbsp;&nbsp;&nbsp;
+         <span (click)='addquantity(a)'  class="description">{{a.Description | titlecase}}<p class="small">{{a.StockInHand}} in stock</p></span>
+
+         <ion-label slot="end" (click)='addquantity(a)'>
+           <small>
+             <h3>{{a.Price}}.00</h3>
+           </small>
+         </ion-label>
+         <span class="flex1" >
+         </span>
+
+       </ion-item>
+     </div>
+   </div>
+
+</ion-content>

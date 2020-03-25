@@ -1,0 +1,30 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu type="overlay">
+      <!-- <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header> -->
+      <span class="menu-card">
+        <span class="signed">Signed in as </span><br>
+        <span class="signedas"><ion-icon  ios="ios-person" md="md-person" ></ion-icon>&nbsp;{{login }}</span><br>
+        <span><ion-button expand="full" color='danger' (click)="logout()">Sign Out</ion-button></span>
+      </span>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+      <span class="version">Version 1.0.0</span>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

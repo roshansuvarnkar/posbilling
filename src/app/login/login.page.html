@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-title>Sign In</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <h3>Login Form</h3> -->
+  <mat-card>
+    <mat-card-subtitle>
+      Login
+    </mat-card-subtitle>
+    <mat-card-content>
+      <form class="form" [formGroup]="loginform" (ngSubmit)="onSubmit(loginform.value)">
+          <div class="input">
+            <mat-form-field >
+              <input matInput type="text" placeholder="User name" formControlName="user_name" matInput required >
+            </mat-form-field>
+          </div>
+          <div class="input">
+            <mat-form-field >
+              <input matInput  [type]="passwordType" placeholder="Password" formControlName="password" matInput required >
+              <mat-icon matSuffix (click)="hideShowPassword()">{{passwordIcon}}</mat-icon>
+            </mat-form-field>
+          </div>
+
+      <!-- [disabled]="!loginform.valid" -->
+
+                <ion-button class="submit-btn" expand="block" full type="submit" >Submit</ion-button>
+                <div class="centre">
+                  <br><a class="underline-none" routerLink="/registration">Register</a>
+                </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+
+
+</ion-content>
